@@ -6,6 +6,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet"); // Import the helmet middleware
+const csrf = require("csurf"); // import csurf package
 
 // Connect DB
 mongoose
@@ -25,6 +26,10 @@ app.use(express.json());
 //Error 2 - fixing Information Explosure error
 // Use helmet middleware to remove the X-Powered-By header
 app.use(helmet());
+
+// Enable CSRF protection
+const csrfProtection = csrf({ cookie: true }); // Use cookies to store CSRF tokens
+app.use(csrfProtection);
 
 // import Routes
 app.use("/api/auth", require("./routes/auth"));
