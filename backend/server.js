@@ -22,6 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+//Error 2 - fixing Information Explosure error
 // Use helmet middleware to remove the X-Powered-By header
 app.use(helmet());
 
