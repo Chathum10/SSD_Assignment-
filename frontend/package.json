@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "ansi-regex": "^5.0.1",
     "axios": "^0.27.2",
+    "decode-uri-component": "^0.2.2",
     "jspdf": "^2.4.0",
     "jspdf-autotable": "^3.5.25",
     "loader-utils": "^2.0.4",
