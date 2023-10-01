@@ -6,7 +6,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet"); // Import the helmet middleware
-const csrf = require("csurf"); // import csurf package
+// const csrf = require("csurf"); // import csurf package
 
 // Add the express-rate-limit package
 const rateLimit = require("express-rate-limit");
@@ -32,8 +32,13 @@ app.use(helmet());
 
 //Error 3 - fixing CSRF Vulnerability
 // Enable CSRF protection
-const csrfProtection = csrf({ cookie: true }); // Use cookies to store CSRF tokens
-app.use(csrfProtection);
+// const csrfProtection = csrf({ cookie: true }); // Use cookies to store CSRF tokens
+// app.use(csrfProtection);
+
+// // Define a route to fetch the CSRF token
+// app.get("/csrf-token", (req, res) => {
+//   res.json({ csrfToken: req.csrfToken() });
+// });
 
 // import Routes
 app.use("/api/auth", require("./routes/auth"));
