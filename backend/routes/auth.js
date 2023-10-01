@@ -4,9 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { requireLogin } = require("../middleware/auth");
 
-// A random salt
-const saltRounds = 10; //the number of rounds as needed
-
 // Register user
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -15,15 +12,29 @@ router.post("/register", async (req, res) => {
     if (user) {
       return res.status(400).json({ error: "User already exists" });
     }
-    // Generate a random salt and hash the password
-    const hashed_password = await bcrypt.hash(password, saltRounds);
-    user = new User({
-      name,
-      email,
-      password: hashed_password,
+
+    // Generate a random salt with bcrypt
+    bcrypt.genSalt(10, async (err, salt) => {
+      if (err) {
+        return res.status(500).json({ error: "Salt generation failed" });
+      }
+
+      // Hash the password using the generated salt
+      bcrypt.hash(password, salt, async (err, hashed_password) => {
+        if (err) {
+          return res.status(500).json({ error: "Password hashing failed" });
+        }
+
+        user = new User({
+          name,
+          email,
+          password: hashed_password,
+        });
+
+        await user.save();
+        return res.status(201).json({ message: "User created successfully" });
+      });
     });
-    await user.save();
-    return res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
