@@ -8,6 +8,9 @@ const path = require("path");
 const helmet = require("helmet"); // Import the helmet middleware
 const csrf = require("csurf"); // import csurf package
 
+// Add the express-rate-limit package
+const rateLimit = require("express-rate-limit");
+
 // Connect DB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -46,21 +49,26 @@ const departmentsRoutes = require("./routes/departments");
 //Financial Management Function Routes
 const financialRoutes = require("./routes/financial");
 
+// Serve static assets (build folder)
+app.use(express.static("client/build"));
+
+// Implement rate limiting
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 10, // limit each IP to 10 requests per windowMs
+});
+app.use(limiter);
+
+// Serve the "index.html" file for specific client-side routes
+app.get("/app/*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
+
 //route middleware
 app.use(employRoutes);
 app.use(projectsRoutes);
 app.use(departmentsRoutes);
 app.use(financialRoutes);
-
-// Serve static assets (build folder) if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
-  // get anything, load index.html file
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 
 const PORT = process.env.PORT || 5000;
 
