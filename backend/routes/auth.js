@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ error: "User already exists" });
     }
 
-    //fix error 01 - Hardcoded Secret
+    //fix Vulnerability 01 - Hardcoded Secret
     // Generate a random salt with bcrypt
     bcrypt.genSalt(10, async (err, salt) => {
       if (err) {

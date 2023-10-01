@@ -26,10 +26,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-//Error 2 - fixing Information Explosure error
+//Error 2 - fixing Information Explosure Vulnerability
 // Use helmet middleware to remove the X-Powered-By header
 app.use(helmet());
 
+//Error 3 - fixing CSRF Vulnerability
 // Enable CSRF protection
 const csrfProtection = csrf({ cookie: true }); // Use cookies to store CSRF tokens
 app.use(csrfProtection);
@@ -49,6 +50,7 @@ const departmentsRoutes = require("./routes/departments");
 //Financial Management Function Routes
 const financialRoutes = require("./routes/financial");
 
+//Error 4 - fixing Allocation of Resources Without Limits or Throttling Vulnerability
 // Serve static assets (build folder)
 app.use(express.static("client/build"));
 
