@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./login.css";
 
-
-
 const Register = (props) => {
   const [data, setData] = useState({
     name: "",
@@ -15,8 +13,7 @@ const Register = (props) => {
 
   const { name, email, password, error } = data;
 
-
-  const handleChange = (e) => {
+ const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
@@ -97,6 +94,5 @@ const Register = (props) => {
     </div>
   );
 };
-
 
 export default Register;
