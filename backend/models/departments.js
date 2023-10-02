@@ -1,60 +1,67 @@
 const mongoose = require('mongoose');
 
+// Define the Departments Schema
 const departmentsSchema = new mongoose.Schema({
-
-    dCategory:{
-        type:String,
-        required:true
+    // Department Category (e.g., HR, IT, Finance)
+    dCategory: {
+        type: String,
+        required: true
     },
-    dName:{
-        type:String,
-        required:true
+    // Department Name
+    dName: {
+        type: String,
+        required: true
     },
-    dEmail:{
-        type:String,
-        required:true
+    // Department Email Address
+    dEmail: {
+        type: String,
+        required: true
     },
-    dTeams:{
-        type:String,
-        required:true
+    // Teams within the Department
+    dTeams: {
+        type: String,
+        required: true
     },
-    hName:{
-        type:String,
-        required:true
-
+    // Head of Department's Name
+    hName: {
+        type: String,
+        required: true
     },
-    hEmail:{
-        type:String,
-        required:true
+    // Head of Department's Email Address
+    hEmail: {
+        type: String,
+        required: true
     },
-    hNo:{
-        type:String,
-        required:true
+    // Head of Department's Phone Number
+    hNo: {
+        type: String,
+        required: true
     },
-    uDate:{
-        type:String,
-        required:true
+    // Date of Department Update or Creation
+    uDate: {
+        type: String,
+        required: true
     },
-
-
-    //calculation part (Employee Count calculation)
-
-
-    permanent:{
-        type:String,
+    
+    // Calculation part for Employee Count
+    // Number of Permanent Employees
+    permanent: {
+        type: String,
     },
-    contract:{
-        type:String,
+    // Number of Contract Employees
+    contract: {
+        type: String,
     },
-    interns:{
-        type:String,
+    // Number of Interns
+    interns: {
+        type: String,
     },
-    total:{
-        type:String,
+    // Total Employee Count (defaulted to "N/A")
+    total: {
+        type: String,
         default: "N/A",
     },
 });
 
-
-
-module.exports = mongoose.model('departments',departmentsSchema);
+// Export the Departments model with the defined schema
+module.exports = mongoose.model('departments', departmentsSchema);
