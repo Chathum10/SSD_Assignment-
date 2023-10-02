@@ -6,6 +6,7 @@ const emailRegex = RegExp(
   /^[a-z0-9.!#$%&â€™+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)$/
 );
 
+
 const phoneRegex = RegExp(/^[0-9]{10,15}$/);
 
 const nicRegex = RegExp(/^[0-9+v]{10,12}$/);
