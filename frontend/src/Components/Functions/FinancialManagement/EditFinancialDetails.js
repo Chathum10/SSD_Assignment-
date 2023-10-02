@@ -7,6 +7,7 @@ const priceRegex = RegExp(/^\d*\.?\d*$/);
 const formValid = (formErrors) => {
   let valid = true;
 
+
   Object.values(formErrors).forEach((val) => {
     val.length > 0 && (valid = false);
   });
@@ -54,6 +55,7 @@ export default class EditFinancialDetails extends Component {
 
     let formErrors = this.state.formErrors;
 
+    
     switch (name) {
       case "ifweek":
         formErrors.ifweek = priceRegex.test(value)
