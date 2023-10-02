@@ -13,6 +13,7 @@ export default class DeptReport extends Component {
     };
   }
 
+
   createPdf = (pdfBody) => {
     var doc = new jsPDF();
     var totalPagesExp = "{total_pages_count_string}"; //placeholder for total number of pages
@@ -63,6 +64,7 @@ export default class DeptReport extends Component {
       doc.putTotalPages(totalPagesExp);
     }
 
+
     doc.save("Department_Report.pdf"); //this downloads a copy of the pdf in your local instance.
   };
 
@@ -94,6 +96,7 @@ export default class DeptReport extends Component {
       post.dCategory.toLowerCase().includes(searchKey)||
       post.dName.toLowerCase().includes(searchKey)
     );
+
 
     this.setState({ departments: result });
   }
@@ -186,6 +189,7 @@ export default class DeptReport extends Component {
                   onClick={this.createPdf}
                 >
                   <b>Download PDF</b> &nbsp;
+                  
                 </a>
               </center>
             </div>
