@@ -55,7 +55,7 @@ export default class EditFinancialDetails extends Component {
 
     let formErrors = this.state.formErrors;
 
-    
+
     switch (name) {
       case "ifweek":
         formErrors.ifweek = priceRegex.test(value)
@@ -112,6 +112,7 @@ export default class EditFinancialDetails extends Component {
         break;
     }
 
+    
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
     this.setState({
