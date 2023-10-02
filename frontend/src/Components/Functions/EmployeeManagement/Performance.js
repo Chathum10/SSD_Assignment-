@@ -331,6 +331,7 @@ export default class Performance extends Component {
                           onChange={this.handleInputChange}
                         />
                       </th>
+                      
                       <th>
                         <button
                           className="btn btn-info"
