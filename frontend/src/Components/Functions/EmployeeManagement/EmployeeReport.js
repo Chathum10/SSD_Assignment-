@@ -13,6 +13,7 @@ export default class EmployeeReport extends Component {
     };
   }
 
+  
   createPdf = (pdfBody) => {
     var doc = new jsPDF();
     var totalPagesExp = "{total_pages_count_string}"; //placeholder for total number of pages
