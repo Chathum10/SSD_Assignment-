@@ -720,6 +720,7 @@ export default class AddFinancialDetails extends Component {
                           onChange={this.handleInputChange}
                         />
                         <br />
+                        
                         <input
                           type="text"
                           className="form-control"
