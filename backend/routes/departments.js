@@ -4,7 +4,6 @@ const departments = require('../models/departments');
 const router = express.Router();
 
 
-
 //Save a departments Info
 router.post('/departments/save',(req,res)=>{
 
