@@ -41,6 +41,7 @@ export default class EditProjectData extends Component {
     };
   }
 
+  
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
