@@ -54,6 +54,8 @@ export default class EmpData extends Component {
     });
   };
 
+
+  
   render() {
     return (
       <div className="back fixed" style={{ zIndex: 8 }}>
