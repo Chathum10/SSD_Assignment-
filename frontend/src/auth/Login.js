@@ -9,7 +9,9 @@ const Login = (props) => {
     error: null,
   });
 
+
   const { email, password, error } = data;
+
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -36,6 +38,7 @@ const Login = (props) => {
       setData({ ...data, error: err.response.data.error });
     }
   };
+
 
   return (
     <div className="bdy">
@@ -86,6 +89,7 @@ const Login = (props) => {
     </div>
   );
 };
+
 
 
 export default Login;
