@@ -45,16 +45,21 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    let user = await User.findOne({ email });
+    // Find the user by email using Mongoose
+    const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
+    // Compare the provided password with the hashed password using bcrypt
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
+    // Generate a JWT token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
@@ -68,7 +73,6 @@ router.post("/login", async (req, res) => {
       },
     });
   } catch (err) {
-    // console.log(err);
     return res.status(400).json({ error: err.message });
   }
 });
