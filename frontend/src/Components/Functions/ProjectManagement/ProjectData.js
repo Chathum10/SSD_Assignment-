@@ -26,6 +26,7 @@ export default class ProjectData extends Component {
     });
   }
 
+  
   onDelete = (id) => {
     axios.delete(`/projects/delete/${id}`).then((res) => {
       alert("Projects Data Deleted Successfully");
