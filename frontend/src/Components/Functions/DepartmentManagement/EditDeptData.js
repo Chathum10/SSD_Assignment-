@@ -6,6 +6,7 @@ const emailRegex = RegExp(
   /^[a-z0-9.!#$%&â€™+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)$/
 );
 
+
 const phoneRegex = RegExp(/^[0-9]{10,15}$/);
 
 const charRegex = RegExp(/^[a-zA-Z]{1,50}$/);
@@ -46,6 +47,7 @@ export default class EditDeptData extends Component {
 
     let formErrors = this.state.formErrors;
 
+    
     switch (name) {
       case "dEmail":
         formErrors.dEmail = emailRegex.test(value)

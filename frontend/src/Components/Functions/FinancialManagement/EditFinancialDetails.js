@@ -7,6 +7,7 @@ const priceRegex = RegExp(/^\d*\.?\d*$/);
 const formValid = (formErrors) => {
   let valid = true;
 
+
   Object.values(formErrors).forEach((val) => {
     val.length > 0 && (valid = false);
   });
@@ -53,6 +54,7 @@ export default class EditFinancialDetails extends Component {
     const { name, value } = e.target;
 
     let formErrors = this.state.formErrors;
+
 
     switch (name) {
       case "ifweek":
@@ -109,6 +111,7 @@ export default class EditFinancialDetails extends Component {
       default:
         break;
     }
+
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
@@ -199,6 +202,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+
   theTotalOutcome = (e) => {
     e.preventDefault();
 
@@ -241,6 +245,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+
   theStatus = (e) => {
     e.preventDefault();
     const {
@@ -279,6 +284,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+  
   generateKey = (e) => {
     e.preventDefault();
 

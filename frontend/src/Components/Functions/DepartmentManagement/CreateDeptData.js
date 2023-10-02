@@ -391,6 +391,7 @@ export default class CreateDeptData extends Component {
                 </form>
               </div>
             </MDBCard>
+            
             <br /> <br /> <br /> <br />
           </center>
         </div>

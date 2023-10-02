@@ -5,9 +5,6 @@ const router = express.Router();
 
 
 //Save a projects Info
-
-
-
 router.post('/projects/save',(req,res)=>{
 
     let newPost = new projects(req.body);
@@ -26,8 +23,6 @@ router.post('/projects/save',(req,res)=>{
 
 
 //get projects Info
-
-
 router.get('/projects',(req,res) =>{
     projects.find().exec((err,posts) =>{
         if(err){
@@ -45,9 +40,6 @@ router.get('/projects',(req,res) =>{
 
 
 //get a specific projects Info
-
-
-
 router.get("/projects/:id",(req,res) =>{
 
     let postId = req.params.id;
@@ -68,9 +60,6 @@ router.get("/projects/:id",(req,res) =>{
 
 
 //update a projects Info
-
-
-
 router.put('/projects/update/:id',(req,res)=>{
     projects.findByIdAndUpdate(
         req.params.id,
@@ -92,9 +81,6 @@ router.put('/projects/update/:id',(req,res)=>{
 
 
 //Delete a projects Info
-
-
-
 router.delete('/projects/delete/:id',(req,res) =>{
     projects.findByIdAndRemove(req.params.id).exec((err,deletePost) =>{
 

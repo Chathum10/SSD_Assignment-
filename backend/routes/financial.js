@@ -3,7 +3,6 @@ const Financial = require("../models/financial");
 const router = express.Router();
 
 //save Financial details
-
 router.post("/financial/save", (req, res) => {
   let newFinancial = new Financial(req.body);
 
@@ -22,8 +21,6 @@ router.post("/financial/save", (req, res) => {
 
 
 //get financial details
-
-
 router.get("/financial", (req, res) => {
   Financial.find().exec((err, financial) => {
     if (err) {
@@ -40,9 +37,6 @@ router.get("/financial", (req, res) => {
 
 
 //get a specific financial detail
-
-
-
 router.get("/financial/:id", (req, res) => {
   let financialId = req.params.id;
 
@@ -61,9 +55,6 @@ router.get("/financial/:id", (req, res) => {
 
 
 //update  financial details
-
-
-
 router.put("/financial/update/:id", (req, res) => {
   Financial.findByIdAndUpdate(
     req.params.id,
@@ -85,9 +76,6 @@ router.put("/financial/update/:id", (req, res) => {
 
 
 //delete  financial details
-
-
-
 router.delete("/financial/delete/:id", (req, res) => {
   Financial.findByIdAndRemove(req.params.id).exec((err, deleteFinancial) => {
     if (err)

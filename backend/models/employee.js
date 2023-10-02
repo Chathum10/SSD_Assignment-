@@ -1,64 +1,78 @@
 const mongoose = require('mongoose');
 
+// Define the Employee Schema
 const employeeSchema = new mongoose.Schema({
-
-    name:{
-        type:String,
-        required:true
+    // Employee Name
+    name: {
+        type: String,
+        required: true
     },
-    nic:{
-        type:String,
-        required:true
+    // National Identification Card (NIC)
+    nic: {
+        type: String,
+        required: true
     },
-    gender:{
-        type:String,
-        required:true
+    // Gender of the Employee
+    gender: {
+        type: String,
+        required: true
     },
-    contactNo:{
-        type:String,
-        required:true
+    // Contact Number of the Employee
+    contactNo: {
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        required:true
+    // Email Address of the Employee
+    email: {
+        type: String,
+        required: true
     },
-    empId:{
-        type:String,
-        required:true
+    // Employee ID
+    empId: {
+        type: String,
+        required: true
     },
-    joinDate:{
-        type:String,
-        required:true
+    // Date of Joining the Company
+    joinDate: {
+        type: String,
+        required: true
     },
-    dueDate:{
-        type:String,
-        required:true
+    // Due Date or End Date (e.g., Contract End Date) for the Employee
+    dueDate: {
+        type: String,
+        required: true
     },
-    dept:{
-        type:String,
-        required:true
+    // Department to which the Employee belongs
+    dept: {
+        type: String,
+        required: true
     },
-    designation:{
-        type:String,
-        required:true
+    // Job Designation of the Employee
+    designation: {
+        type: String,
+        required: true
     },
     
-    //calculation part (EMP perfoamance calculation)
-    monthRating:{
-        type:String,
+    // Calculation part for Employee Performance
+    // Monthly Rating (if applicable)
+    monthRating: {
+        type: String,
     },
-    overallRating:{
-        type:String,
-        default:"0",
+    // Overall Rating (defaulted to "0")
+    overallRating: {
+        type: String,
+        default: "0",
     },
-    overallmonths:{
-        type:String,
+    // Total Months or Duration for Overall Rating Calculation
+    overallmonths: {
+        type: String,
     },
-    performance:{
-        type:String,
+    // Employee Performance Status (defaulted to "Not Assigned")
+    performance: {
+        type: String,
         default: "Not Assigned",
     },
-
 });
 
-module.exports = mongoose.model('employees',employeeSchema);
+// Export the Employees model with the defined schema
+module.exports = mongoose.model('employees', employeeSchema);
