@@ -9,14 +9,11 @@ const Login = (props) => {
     error: null,
   });
 
-
   const { email, password, error } = data;
-
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,13 +36,12 @@ const Login = (props) => {
     }
   };
 
-
   return (
     <div className="bdy">
       <div className="row">
         <div className="col-sm-1" />
         <div className="col-sm-4">
-          <br></br>   <br></br>
+          <br></br> <br></br>
           <h3 className="text-muted text-center mb-5">LOG INTO YOUR ACCOUNT</h3>
           <div className="card p-5 shadow">
             <form>
@@ -74,10 +70,14 @@ const Login = (props) => {
                 <button className="btn btn-primary" onClick={handleSubmit}>
                   Login
                 </button>
-              </div><br />
+              </div>
+              <br />
               <center>
                 <a className="btn btn-text-primary " href="/register">
                   Don't Have an Account? <b>Register</b>
+                </a>
+                <a className="btn btn-text-primary " href="/LoginButton">
+                  <b>Sign in with Google</b>
                 </a>
               </center>
             </form>
@@ -85,11 +85,18 @@ const Login = (props) => {
         </div>
         <div className="col-sm-2" />
       </div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 };
-
-
 
 export default Login;

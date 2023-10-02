@@ -4,6 +4,7 @@ import "./App.css";
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
+import LoginButton from "./auth/LoginButton";
 import Home from "./Home";
 
 //Dashboard
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/register" component={Register} />
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
+        <Route path="/LoginButton" component={LoginButton} />
 
         <Route path="/CreateEmpData" component={CreateEmpData} />
         <Route path="/EmpData" component={EmpData} />
