@@ -53,42 +53,24 @@ router.get("/employee/:id", (req, res) => {
   });
 });
 
-// //update a Employee Info
+//update a Employee Info
 
-// router.put('/employee/update/:id',(req,res)=>{
-//     employee.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//             $set:req.body
-//         },
-//         (err,post)=>{
-//             if(err){
-//                 return res.status(400).json({error:err});
-//             }
-
-//             return res.status(200).json({
-//                 success:"Updated Successfully"
-//             });
-//         }
-//     );
-// });
-
-// Update route using the custom function
 router.put("/employee/update/:id", (req, res) => {
-  const employeeId = req.params.id;
-  const updateData = req.body;
+  employee.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: req.body,
+    },
+    (err, post) => {
+      if (err) {
+        return res.status(400).json({ error: err });
+      }
 
-  // Use the custom update function
-  updateEmployeeById(employeeId, updateData, (err, updatedEmployee) => {
-    if (err) {
-      return res.status(400).json({ error: err });
+      return res.status(200).json({
+        success: "Updated Successfully",
+      });
     }
-
-    return res.status(200).json({
-      success: "Updated Successfully",
-      updatedEmployee,
-    });
-  });
+  );
 });
 
 //Delete a Employee Info
