@@ -112,7 +112,7 @@ export default class EditFinancialDetails extends Component {
         break;
     }
 
-    
+
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
     this.setState({
@@ -202,6 +202,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+
   theTotalOutcome = (e) => {
     e.preventDefault();
 
@@ -244,6 +245,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+
   theStatus = (e) => {
     e.preventDefault();
     const {
@@ -282,6 +284,7 @@ export default class EditFinancialDetails extends Component {
     });
   };
 
+  
   generateKey = (e) => {
     e.preventDefault();
 
