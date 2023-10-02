@@ -178,6 +178,7 @@ export default class EditEmpData extends Component {
           </center>
           <center>
             <br />
+            
             <MDBCard
               className="text-black mb-3"
               style={{
