@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
-import { useHistory } from "react-router-dom"; // Import useHistory for navigation
+import { useHistory } from "react-router-dom";
 
 const LoginButton = () => {
   const history = useHistory();
