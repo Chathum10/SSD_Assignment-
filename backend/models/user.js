@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema(
   {
     // User's Full Name
+
     name: {
       type: String,
       trim: true, // Trim whitespace from the beginning and end of the string
