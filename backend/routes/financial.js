@@ -20,6 +20,7 @@ router.post("/financial/save", (req, res) => {
 });
 
 //get financial details
+
 router.get("/financial", (req, res) => {
   Financial.find().exec((err, financial) => {
     if (err) {
@@ -33,7 +34,6 @@ router.get("/financial", (req, res) => {
     });
   });
 });
-
 
 //get a specific financial detail
 router.get("/financial/:id", (req, res) => {
@@ -50,8 +50,6 @@ router.get("/financial/:id", (req, res) => {
     });
   });
 });
-
-
 
 //update  financial details
 router.put("/financial/update/:id", (req, res) => {
@@ -72,8 +70,6 @@ router.put("/financial/update/:id", (req, res) => {
   );
 });
 
-
-
 //delete  financial details
 router.delete("/financial/delete/:id", (req, res) => {
   Financial.findByIdAndRemove(req.params.id).exec((err, deleteFinancial) => {
@@ -84,7 +80,6 @@ router.delete("/financial/delete/:id", (req, res) => {
       });
 
     return res.json({
-
       message: "delete Successfully",
 
       deleteFinancial,
