@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { GoogleLogin } from "react-google-login";
 import "./login.css";
+
+const clientId =
+  "752320888262-ddt7775fqt8hdkpaedqgh7tj4g6t6f3d.apps.googleusercontent.com";
 
 const Login = (props) => {
   const [data, setData] = useState({
@@ -13,6 +17,28 @@ const Login = (props) => {
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const onSuccess = async (res) => {
+    console.log("Login Success! Current user: ", res.profileObj);
+    window.location.href = "/home";
+    try {
+      setData({ ...data, error: null });
+      const googleToken = res.tokenId;
+      const response = await axios.post("/api/auth/google-login", {
+        googleToken,
+      });
+
+      localStorage.setItem("token", response.data.token);
+      props.history.push("/home");
+    } catch (err) {
+      setData({ ...data, error: err.response.data.error });
+    }
+  };
+
+  const onFailure = (res) => {
+    console.log("Login Failed! res: ", res);
+    // Handle the login failure, e.g., display an error message.
   };
 
   const handleSubmit = async (e) => {
@@ -72,12 +98,20 @@ const Login = (props) => {
                 </button>
               </div>
               <br />
+              <div align="center">
+                <GoogleLogin
+                  clientId={clientId}
+                  buttonText="Login with Google"
+                  onSuccess={onSuccess}
+                  onFailure={onFailure}
+                  cookiePolicy={"single_host_origin"}
+                  isSignedIn={true}
+                />
+              </div>
+              <br />
               <center>
                 <a className="btn btn-text-primary " href="/register">
                   Don't Have an Account? <b>Register</b>
-                </a>
-                <a className="btn btn-text-primary " href="/LoginButton">
-                  <b>Sign in with Google</b>
                 </a>
               </center>
             </form>

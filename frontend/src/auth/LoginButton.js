@@ -1,32 +1,39 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
-import { useHistory } from "react-router-dom";
+
+const clientId =
+  "752320888262-ddt7775fqt8hdkpaedqgh7tj4g6t6f3d.apps.googleusercontent.com";
 
 const LoginButton = () => {
-  const history = useHistory();
+  const [isGoogleLoginOpen, setIsGoogleLoginOpen] = useState(false);
+  const onSuccess = (res) => {
+    console.log("Login Success! Current user: ", res.profileObj);
+    setIsGoogleLoginOpen(false);
+    window.location.href = "/home";
+  };
 
-  const responseGoogle = (response) => {
-    if (response.profileObj) {
-      // Handle successful authentication, e.g., set user state, redirect, etc.
-      console.log("Authentication succeeded", response.profileObj);
-      // Redirect to the home page
-      history.push("/CreateEmpData");
-    } else {
-      // Handle authentication failure, e.g., show an error message
-      console.error("Authentication failed", response.error);
-      console.log("Auth Failed");
-    }
+  const onFailure = (res) => {
+    console.log("Login Failed! res: ", res);
   };
 
   return (
     <div align="center">
-      <GoogleLogin
-        clientId="752320888262-53ufcjpttu2jhcntfe6ds35bvgef0nce.apps.googleusercontent.com"
-        buttonText="Login with Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
-      />
+      <button onClick={() => setIsGoogleLoginOpen(true)}>
+        Login with Google
+      </button>
+      {isGoogleLoginOpen && (
+        <div className="google-login-popup">
+          <GoogleLogin
+            clientId={clientId}
+            buttonText="Login with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+          />
+        </div>
+      )}
+      <br />
     </div>
   );
 };

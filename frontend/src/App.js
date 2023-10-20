@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import LoginButton from "./auth/LoginButton";
+import LogoutButton from "./auth/LogoutButton";
 import Home from "./Home";
+
+import { gapi } from "gapi-script";
+
+const clientId =
+  "752320888262-ddt7775fqt8hdkpaedqgh7tj4g6t6f3d.apps.googleusercontent.com";
 
 //Dashboard
 
@@ -37,6 +43,17 @@ import EditFinancialDetails from "./Components/Functions/FinancialManagement/Edi
 import Financial from "./Components/Functions/FinancialManagement/Financial";
 
 const App = () => {
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  });
+
   return (
     <BrowserRouter>
       <Switch>
@@ -44,6 +61,7 @@ const App = () => {
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
         <Route path="/LoginButton" component={LoginButton} />
+        <Route path="/logout" component={LogoutButton} />
 
         <Route path="/CreateEmpData" component={CreateEmpData} />
         <Route path="/EmpData" component={EmpData} />
