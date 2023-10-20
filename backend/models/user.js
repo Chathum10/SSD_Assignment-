@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 // Define the User Schema
 const UserSchema = new mongoose.Schema(
   {
-    // User's Full Name
-
     name: {
       type: String,
       trim: true, // Trim whitespace from the beginning and end of the string
